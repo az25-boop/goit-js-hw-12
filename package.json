@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "css-loader": "^7.1.2",
     "glob": "^8.1.0",
     "vite": "^4.5.2"
   },
