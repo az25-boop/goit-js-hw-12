@@ -136,7 +136,7 @@ a {
   margin-bottom: 10px;
 }
 
-.loader {
+/* .loader {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
   border-top: 16px solid blue;
@@ -144,7 +144,7 @@ a {
   height: 120px;
   animation: spin 2s linear infinite;
   display: none;
-}
+} */
 
 @keyframes spin {
   0% {
@@ -155,6 +155,10 @@ a {
   }
 }
 
+.hidden {
+  display: none;
+}
+
 @import 'loaders.css/loaders.css';
 
 /* .loader {
@@ -162,14 +166,15 @@ a {
   justify-content: center;
   align-items: center;
   height: 100vh;
+} */
+
+.loader {
   width: 48px;
   height: 48px;
-  border: 16px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid rgb(130, 70, 185);
   position: relative;
   animation: rotate 1s linear infinite;
-} */
+}
 .loader::before,
 .loader::after {
   content: '';
@@ -185,9 +190,7 @@ a {
   animation: prixClipFix 2s linear infinite, rotate 0.5s linear infinite reverse;
   inset: 6px;
 }
-.hidden {
-  display: none;
-}
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
