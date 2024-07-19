@@ -5,20 +5,16 @@ import 'izitoast/dist/css/iziToast.min.css';
 import 'loaders.css/loaders.css';
 
 const gallery = document.querySelector('.gallery');
+const loadMoreButton = document.querySelector('.load-more');
 
 export function clearGallery() {
-  gallery.innerHTML = '';
+    gallery.innerHTML = '';
 }
 
 export function renderImages(images) {
-  const markup = images
-    .map(
-      image => `
+    const markup = images.map(image => `
         <a href="${image.largeImageURL}" class="gallery__item">
-            <img 
-            src="${image.webformatURL}" 
-            alt="${image.tags}" 
-            class="gallery__image"/>
+            <img src="${image.webformatURL}" alt="${image.tags}" title="${image.tags}" class="gallery__image"/>
             <div class="info">
                 <p class="info-item"><b>Likes:</b> ${image.likes}</p>
                 <p class="info-item"><b>Views:</b> ${image.views}</p>
@@ -26,37 +22,44 @@ export function renderImages(images) {
                 <p class="info-item"><b>Downloads:</b> ${image.downloads}</p>
             </div>
         </a>
-    `
-    )
-    .join('');
+    `).join('');
 
-  gallery.insertAdjacentHTML('beforeend', markup);
+    gallery.insertAdjacentHTML('beforeend', markup);
 
-  const lightbox = new SimpleLightbox('.gallery a', {
-    captions: true,
-    captionSelector: 'img',
-    captionType: 'attr',
-    captionsData: 'alt',
-    captionPosition: 'bottom',
-    captionDelay: 250,
-    animationSpeed: 300,
-    fadeSpeed: 400,
-    docClose: true,
-    swipeClose: true,
-    loop: true,
-    preloading: true,
-  });
-  lightbox.refresh();
+    const lightbox = new SimpleLightbox('.gallery a', {
+        captions: true,
+        captionSelector: 'img',
+        captionType: 'attr',
+        captionsData: 'title',
+        captionPosition: 'bottom',
+        captionDelay: 250,
+        animationSpeed: 300,
+        fadeSpeed: 400,
+        docClose: true,
+        swipeClose: true,
+        loop: true,
+        preloading: true
+    });
+
+    lightbox.refresh();
 }
 
 export function showNotification(message) {
-  iziToast.info({ message, position: 'topRight' });
+    iziToast.info({ message, position: 'topRight' });
 }
 
 export function showLoader() {
-  document.querySelector('.loader').classList.remove('hidden');
+    document.querySelector('.loader').classList.remove('hidden');
 }
 
 export function hideLoader() {
-  document.querySelector('.loader').classList.add('hidden');
+    document.querySelector('.loader').classList.add('hidden');
+}
+
+export function showLoadMoreButton() {
+    loadMoreButton.classList.remove('hidden');
+}
+
+export function hideLoadMoreButton() {
+    loadMoreButton.classList.add('hidden');
 }
