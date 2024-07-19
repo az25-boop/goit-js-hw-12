@@ -159,7 +159,7 @@ a {
   display: none;
 }
 
-@import 'loaders.css/loaders.css';
+/* @import 'loaders.css/loaders.css'; */
 
 .loader {
   width: 48px;
