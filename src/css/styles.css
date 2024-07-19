@@ -155,10 +155,6 @@ a {
   }
 }
 
-.hidden {
-  display: none;
-}
-
 @import 'loaders.css/loaders.css';
 
 .loader {
@@ -187,7 +183,9 @@ a {
   animation: prixClipFix 2s linear infinite, rotate 0.5s linear infinite reverse;
   inset: 6px;
 }
-
+.hidden {
+  display: none;
+}
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
