@@ -159,7 +159,14 @@ a {
   display: none;
 }
 
-/* @import 'loaders.css/loaders.css'; */
+@import 'loaders.css/loaders.css';
+
+/* .loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+} */
 
 .loader {
   width: 48px;
