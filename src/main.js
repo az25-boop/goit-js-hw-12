@@ -35,6 +35,7 @@ searchForm.addEventListener('submit', async event => {
 
   try {
     const images = await fetchImages(currentQuery, currentPage);
+    totalHits = data.totalHits;
     if (images.length === 0) {
       showNotification(
         'Sorry, there are no images matching your search query. Please try again!'
@@ -59,7 +60,7 @@ loadMoreButton.addEventListener('click', async () => {
   hideLoadMoreButton();
 
   try {
-    const images = await fetchImages(currentQuery, currentPage);
+    const data = await fetchImages(currentQuery, currentPage);
     if ((currentPage - 1) * 15 + data.hits.length >= totalHits) {
       hideLoadMoreButton();
       showNotification('No more images found!');
