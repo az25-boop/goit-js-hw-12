@@ -6,10 +6,16 @@ export async function fetchImages(query, page = 1, perPage = 15) {
     const response = await fetch(
       `${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${perPage}`
     );
+    console.log(
+      'Fetch URL:',
+      `${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${perPage}`
+    );
+
     if (!response.ok) {
       throw new Error('Failed to fetch images');
     }
     const data = await response.json();
+    console.log('Fetched data:', data);
     return data;
   } catch (error) {
     console.error('Error fetching images:', error);
