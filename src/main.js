@@ -34,15 +34,17 @@ searchForm.addEventListener('submit', async event => {
   clearGallery();
 
   try {
-    const images = await fetchImages(currentQuery, currentPage);
+    const data = await fetchImages(currentQuery, currentPage);
     totalHits = data.totalHits;
-    if (images.length === 0) {
+    if (data.length === 0) {
       showNotification(
         'Sorry, there are no images matching your search query. Please try again!'
       );
     } else {
-      renderImages(images);
-      showLoadMoreButton();
+      renderImages(data.hits);
+      if (data.hits.length >= 15) {
+        showLoadMoreButton();
+      }
     }
     searchInput.value = '';
   } catch (error) {
