@@ -36,6 +36,7 @@ searchForm.addEventListener('submit', async event => {
   try {
     const data = await fetchImages(currentQuery, currentPage);
     totalHits = data.totalHits;
+    console.log('Total hits:', totalHits);
     if (data.length === 0) {
       showNotification(
         'Sorry, there are no images matching your search query. Please try again!'
@@ -48,6 +49,7 @@ searchForm.addEventListener('submit', async event => {
     }
     searchInput.value = '';
   } catch (error) {
+    console.error('Error during search submit:', error);
     showNotification(
       'An error occurred while fetching images. Please try again later.'
     );
@@ -63,14 +65,20 @@ loadMoreButton.addEventListener('click', async () => {
 
   try {
     const data = await fetchImages(currentQuery, currentPage);
-    if ((currentPage - 1) * 15 + data.hits.length >= totalHits) {
+    if (data.hits.length === 0) {
       hideLoadMoreButton();
       showNotification('No more images found!');
     } else {
       renderImages(data.hits);
-      showLoadMoreButton();
+      if ((currentPage - 1) * 15 + data.hits.length >= totalHits) {
+        hideLoadMoreButton();
+        showNotification('No more images found!');
+      } else {
+        showLoadMoreButton();
+      }
     }
   } catch (error) {
+    console.error('Error during load more:', error);
     showNotification(
       'An error occurred while fetching images. Please try again later.'
     );
