@@ -72,7 +72,7 @@ loadMoreButton.addEventListener('click', async () => {
       renderImages(data.hits);
       if ((currentPage - 1) * 15 + data.hits.length >= totalHits) {
         hideLoadMoreButton();
-        showNotification('Ніде, нічого нема!!');
+        showNotification('За цим запитом зображень більше ніде, нічого нема!!');
       } else {
         showLoadMoreButton();
       }
