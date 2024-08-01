@@ -31,6 +31,7 @@ export function renderImages(images) {
 
   gallery.insertAdjacentHTML('beforeend', markup);
   lightbox.refresh();
+  smoothScrollToNewImages();
 }
 
 export function showNotification(message) {
@@ -51,4 +52,11 @@ export function showLoadMoreButton() {
 
 export function hideLoadMoreButton() {
   loadMoreButton.classList.add('hidden');
+}
+
+function smoothScrollToNewImages() {
+  const lastImage = document.querySelector('.gallery a:last-child');
+  if (lastImage) {
+    lastImage.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  }
 }
